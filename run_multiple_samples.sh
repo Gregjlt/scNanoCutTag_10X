@@ -66,25 +66,27 @@ do
 #   echo ${OUTPUT_CONFIG} 
 #   echo ${MARK}
 
-  BCL_DIR=$(echo "$line" | cut -d',' -f1)
-  NGS_NAME=$(echo "$line" | cut -d',' -f2)
-  ASSEMBLY=$(echo "$line" | cut -d',' -f3)
-  NANOBC=$(echo "$line" | cut -d',' -f4)
-  MARK=$(echo "$line" | cut -d',' -f5)
+  DATASET_NUMBER=$(echo "$line" | cut -d',' -f1)
+  DATASET_NAME=$(echo "$line" | cut -d',' -f2)
+  CLEAN_NAME=$(echo "$line" | cut -d',' -f3)
+  ASSEMBLY=$(echo "$line" | cut -d',' -f4)
+  NANOBC=$(echo "$line" | cut -d',' -f5)
+  MARK=$(echo "$line" | cut -d',' -f6)
   DESIGN_TYPE=LBC
   
-  echo $BCL_DIR
-  echo $NGS_NAME
+  echo $DATASET_NUMBER
+  echo $DATASET_NAME
+  echo $CLEAN_NAME
   echo $ASSEMBLY
   echo $NANOBC
   echo $MARK 
   echo $DESIGN_TYPE
   
-  FINAL_NAME=${NGS_NAME}_${ASSEMBLY}_${NANOBC}_${MARK}
+  FINAL_NAME=${CLEAN_NAME}_${NANOBC}_${MARK}
   
   echo $FINAL_NAME 
   
-  OUTPUT_CONFIG=/data/tmp/gjouault/results/CONFIG_scNanoCutTag_InDrop_${FINAL_NAME}
+  OUTPUT_CONFIG=/data/tmp/gjouault/results/CONFIG_scNanoCutTag_10X_${FINAL_NAME}
 
 #Check if we can remove the -- mark
  ./schip_processing.sh GetConf --template  CONFIG_TEMPLATE --configFile species_design_configs.csv --designType ${DESIGN_TYPE} --genomeAssembly ${ASSEMBLY} --outputConfig ${OUTPUT_CONFIG}
@@ -96,7 +98,7 @@ do
   # FASTQ_DIR=/data/tmp/gjouault/10X/fastq/${DATASET_NAME}/
   
 
- echo "cd ~/GitLab/scCutTag_10X/; ./schip_processing.sh All -i ${FASTQ_DIR} -d ${DATASET_NAME} -c ${OUTPUT_CONFIG} -o ${OUTPUT_DIR} --name ${FINAL_NAME}" | qsub -l "nodes=1:ppn=8,mem=60gb" -N job_${FINAL_NAME}_${ASSEMBLY}
+ echo "cd ~/GitLab/scNanoCutTag_10X/; ./schip_processing.sh All -i ${FASTQ_DIR} -d ${DATASET_NAME} -c ${OUTPUT_CONFIG} -o ${OUTPUT_DIR} --name ${FINAL_NAME} --nanobc ${NANOBC}" | qsub -l "nodes=1:ppn=8,mem=60gb" -N job_${FINAL_NAME}_${ASSEMBLY}
 
 done < "$sample_sheet"
 
