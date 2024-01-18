@@ -7,11 +7,10 @@
 
 
 ##GetConf function <- from EWOK (https://gitlab.curie.fr/data-analysis/ewok)
+
 getConf_func(){
 	if [[ $# != "5" && $# != "6" ]]; then 
-		echo "All arguments must be filled : getConf_func TEMPLATE CONFIGS DESIGN_TYPE ASSEMBLY OUT_FILE MARK [TARGET_BED] "; 
-		echo; 
-		help_func GetConf;
+		echo "All arguments must be filled : getConf_func TEMPLATE CONFIGS DESIGN_TYPE ASSEMBLY OUT_FILE MARK [TARGET_BED] "; echo; help_func GetConf;
 	else 	
 		local TEMPLATE=${1}
 		local CONFIGS=${2}
@@ -24,13 +23,11 @@ getConf_func(){
 		mkdir -p $(dirname ${OUT_FILE})
 
 		CONFIG_LINE=$(awk -v d=${DESIGN_TYPE} -v g=${ASSEMBLY} '{FS="\t"; OFS="\t"}{if($1 == d && $2 == g) print NR }' ${CONFIGS})
-		echo "CONFIG_LINE: ${CONFIG_LINE}"
 		cp ${TEMPLATE} ${OUT_FILE}
 
 		for i in $(seq 1 $(awk '{FS="\t"; OFS="\t"}{if(NR == 1) print NF}' ${CONFIGS})); do 
 			KEY=$(awk -v i=$i '{FS="\t"; OFS="\t"}{if(NR == 1)print "{"$i"}"}' ${CONFIGS})
 			VALUE=$(awk -v i=$i -v c=${CONFIG_LINE} '{FS="\t"; OFS="\t"}{if(NR == c) print $i}' ${CONFIGS})
-			echo "KEY: ${KEY}, VALUE: ${VALUE}"
 			if [[ $(echo $VALUE |grep -c " ") > 0 ]] ; then 
 				sed -i "s|${KEY}|\"${VALUE}\"|g" ${OUT_FILE} 
 			else 
@@ -38,8 +35,8 @@ getConf_func(){
 			fi 
 		done 
 		sed -i 's/"//g' ${OUT_FILE}
-		echo "OUT_FILE contents: "
-		cat ${OUT_FILE}
+		# echo "OUT_FILE contents: "
+		# cat ${OUT_FILE}
 		#change script dir
 		if [ ! ${#TARGET_BED[@]} -eq 0 ]
 		then
