@@ -26,6 +26,7 @@ SCRIPTS_PATH="$ABS_BIN_PATH/scripts"
 . /$SCRIPTS_PATH/func.inc.sh
 . /$SCRIPTS_PATH/make_metadata.sh
 
+NANOBC_REF="$ABS_BIN_PATH/nano_bc_ref.csv"
 
 function usage {
     echo -e ""
