@@ -327,6 +327,7 @@ echo "Running pipeline for sample $NAME"
     echo -e "Removing the nanoBC and the partial Read1N in the R2 (index) fastq file  ... \n"
     remove_nanobc_read1N_func ${ODIR} ${INDEX} ${PREFIX} ${LOGDIR}
     
+  fi  
     # INDEX=${output_dir}/fastqs/${name}.R2.fastq.temp.gz
     echo "${INDEX}"
     
