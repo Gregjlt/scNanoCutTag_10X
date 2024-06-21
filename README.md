@@ -1,6 +1,6 @@
-# Single-cell CUT&Tag InDrop pipeline
+# Single-cell nano CUT&Tag 10X pipeline
 
-This data engineering pipeline is designed to treat single-cell CUT&Tag InDrop
+This data engineering pipeline is designed to treat single-cell nano CUT&Tag 10X
 with protocol design from the Institut Curie SingleCellOmics Platform and Vallot Lab.
 The dataset starts from raw BCL sequencing files to exploitable output such
 as count matrices, coverage file and report.  
@@ -107,8 +107,7 @@ READ2=/data/users/pprompsy/tests/A1082C1.R2.fastq.gz
 
 ### Authors
 
-Authors - Pacôme Prompsy (pacome.prompsy@curie.fr), Nicolas Servant
-date - 20th September 2022
+Authors - Pacôme Prompsy, Nicolas Servant, Gregoire Jouault (gregoire.jouault@curie.fr)
 
 
 
