@@ -175,23 +175,23 @@ concatenate_fastqs_from_10X()
         #         exec_cmd ${cmd} >> ${log} 2>&1
         # done
 
-        for i in $(ls ${fastq_dir} | grep R1 | grep -v ${sample_name} | grep fastq.gz)
-        do
-                cmd="gzip -cd ${fastq_dir}${i} | gzip >> ${output_dir}/${sample_name}.R1.fastq.gz"
-                exec_cmd ${cmd} >> ${log} 2>&1
-        done
+        # for i in $(ls ${fastq_dir} | grep R1 | grep -v ${sample_name} | grep fastq.gz)
+        # do
+        #         cmd="gzip -cd ${fastq_dir}${i} | gzip >> ${output_dir}/${sample_name}.R1.fastq.gz"
+        #         exec_cmd ${cmd} >> ${log} 2>&1
+        # done
 
-        for i in $(ls ${fastq_dir} | grep I2 | grep -v ${sample_name} | grep fastq.gz)
-        do
-                cmd="gzip -cd ${fastq_dir}${i} | gzip >> ${output_dir}/${sample_name}.R2.fastq.gz"
-                exec_cmd ${cmd} >> ${log} 2>&1
-        done
+        # for i in $(ls ${fastq_dir} | grep I2 | grep -v ${sample_name} | grep fastq.gz)
+        # do
+        #         cmd="gzip -cd ${fastq_dir}${i} | gzip >> ${output_dir}/${sample_name}.R2.fastq.gz"
+        #         exec_cmd ${cmd} >> ${log} 2>&1
+        # done
  
-        for i in $(ls ${fastq_dir} | grep R2 | grep -v ${sample_name} | grep fastq.gz)
-        do
-                cmd="gzip -cd ${fastq_dir}${i} | gzip >> ${output_dir}/${sample_name}.R3.fastq.gz"
-                exec_cmd ${cmd} >> ${log} 2>&1
-        done
+        # for i in $(ls ${fastq_dir} | grep R2 | grep -v ${sample_name} | grep fastq.gz)
+        # do
+        #         cmd="gzip -cd ${fastq_dir}${i} | gzip >> ${output_dir}/${sample_name}.R3.fastq.gz"
+        #         exec_cmd ${cmd} >> ${log} 2>&1
+        # done
 
           # Add condition to check if the kdi format is R1,R2,R3 or R1,R2,I1,I2
 
