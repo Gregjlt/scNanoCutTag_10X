@@ -93,8 +93,8 @@ do
  #--mark ${MARK}
  
   OUTPUT_DIR=/data/kdi_prod/project_result/1184/02.00/results/scCutTag/${ASSEMBLY}/${FINAL_NAME}
-  FASTQ_DIR=/data/kdi_prod/dataset/${DATASET_NUMBER}/export/user/FastqForAllSamples/ 
-  # FASTQ_DIR=/data/kdi_prod/dataset/${DATASET_NUMBER}/export/user/fastqs/${DATASET_NAME}/
+  #FASTQ_DIR=/data/kdi_prod/dataset/${DATASET_NUMBER}/export/user/FastqForAllSamples/ 
+  FASTQ_DIR=/data/kdi_prod/dataset/${DATASET_NUMBER}/export/user/fastqs/${DATASET_NAME}/
   # FASTQ_DIR=/data/tmp/gjouault/10X/fastq/${DATASET_NAME}/
   
 
