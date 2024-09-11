@@ -98,7 +98,7 @@ do
   # FASTQ_DIR=/data/tmp/gjouault/10X/fastq/${DATASET_NAME}/
   
 
- echo "cd ~/GitLab/scNanoCutTag_10X/; ./schip_processing.sh All -i ${FASTQ_DIR} -d ${DATASET_NAME} -c ${OUTPUT_CONFIG} -o ${OUTPUT_DIR} --name ${FINAL_NAME} --nanobc ${NANOBC}" | qsub -l "nodes=1:ppn=8,mem=60gb" -N job_${DATASET_NAME}_${MARK}_${ASSEMBLY}
+ echo "cd ~/GitLab/scNanoCutTag_10X/; ./schip_processing.sh All -i ${FASTQ_DIR} -d ${DATASET_NAME} -c ${OUTPUT_CONFIG} -o ${OUTPUT_DIR} --name ${FINAL_NAME} --nanobc ${NANOBC}" | qsub -l "nodes=1:ppn=8,mem=80gb" -N job_${DATASET_NAME}_${MARK}_${ASSEMBLY}
 
 done < "$sample_sheet"
 
