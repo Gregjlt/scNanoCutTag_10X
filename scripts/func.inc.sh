@@ -195,7 +195,7 @@ concatenate_fastqs_from_10X()
 
           # Add condition to check if the kdi format is R1,R2,R3 or R1,R2,I1,I2
 
-        if ls ${fastq_dir}* | grep fastq.gz | grep -q I1.fastq.gz; then 
+        if ls ${fastq_dir}* | grep fastq.gz | grep -q "I1.fastq.gz\|L001_I1_001.fastq.gz" ; then 
  
         for i in $(ls ${fastq_dir} | grep R1 | grep -v ${sample_name} | grep fastq.gz)
         do
